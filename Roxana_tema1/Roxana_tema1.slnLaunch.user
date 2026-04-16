@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Roxana_tema1\\Roxana_tema1.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Console_App\\Console_App.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

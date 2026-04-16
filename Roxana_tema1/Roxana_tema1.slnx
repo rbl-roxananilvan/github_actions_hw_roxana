@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Common/Common.csproj" Id="f2c698e3-7612-423f-a5e5-4c5ca179ca10" />
+  <Project Path="Console_App/Console_App.csproj" Id="3f5895b4-0a7e-443c-bbf8-48af564b05b8" />
+  <Project Path="DataPersistance/DataPersistance.csproj" Id="607eaca5-1da2-4fa1-997a-70aa84efab63" />
+  <Project Path="Interfaces/Interfaces.csproj" Id="6fe8f931-aeb7-4f80-8c24-29f07e0490b9" />
+  <Project Path="Roxana_tema1/Roxana_tema1.csproj" />
+  <Project Path="Services/Services.csproj" Id="42df163a-1989-40ea-8b69-102e486c72bd" />
+  <Project Path="UnitTests/UnitTests.csproj" Id="65345429-4904-4524-ae66-6ed95abf84d0" />
+</Solution>

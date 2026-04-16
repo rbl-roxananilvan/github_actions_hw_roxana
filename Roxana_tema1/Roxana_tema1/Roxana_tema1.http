@@ -1,0 +1,6 @@
+@Roxana_tema1_HostAddress = http://localhost:5026
+
+GET {{Roxana_tema1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
