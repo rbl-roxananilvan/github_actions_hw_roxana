@@ -42,7 +42,7 @@ jobs:
         run: dotnet build Roxana_tema1/Roxana_tema1.slnx --no-restore --configuration Release
 
       - name: Test (with coverage collection)
-        run: dotnet test Roxana_tema1/Roxana_tema1.slnx --no-build --configuration Release --collect:"XPlat Code Coverage"
+        run: dotnet test Roxana_tema1/UnitTests/UnitTests.csproj --no-build --configuration Release --collect:"XPlat Code Coverage"
 
       - name: Publish app
         if: github.event_name == 'workflow_dispatch'
