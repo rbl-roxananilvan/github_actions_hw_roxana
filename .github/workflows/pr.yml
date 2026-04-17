@@ -20,10 +20,10 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Restore
-        run: dotnet restore BlobDemo.sln
+        run: dotnet restore Roxana_tema1/Roxana_tema1.slnx
 
       - name: Build
-        run: dotnet build BlobDemo.sln --no-restore --configuration Release
+        run: dotnet build Roxana_tema1/Roxana_tema1.slnx --no-restore --configuration Release
 
       - name: Test (with coverage collection)
-        run: dotnet test BlobDemo.sln --no-build --configuration Release --collect:"XPlat Code Coverage"
+        run: dotnet test Roxana_tema1/Roxana_tema1.slnx --no-build --configuration Release --collect:"XPlat Code Coverage"
