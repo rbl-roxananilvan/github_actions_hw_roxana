@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Repos\\Roxana_tema1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|d:\\repos\\roxana_tema1\\unittests\\bookserviceasynctests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|solutionrelative:unittests\\bookserviceasynctests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|d:\\repos\\roxana_tema1\\unittests\\bookcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|solutionrelative:unittests\\bookcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{42DF163A-1989-40EA-8B69-102E486C72BD}|Services\\Services.csproj|d:\\repos\\roxana_tema1\\services\\bookserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42DF163A-1989-40EA-8B69-102E486C72BD}|Services\\Services.csproj|solutionrelative:services\\bookserviceasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|d:\\repos\\roxana_tema1\\unittests\\bookcontrollerv2tests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|solutionrelative:unittests\\bookcontrollerv2tests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|d:\\repos\\roxana_tema1\\unittests\\bookserviceasynctests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65345429-4904-4524-AE66-6ED95ABF84D0}|UnitTests\\UnitTests.csproj|solutionrelative:unittests\\bookserviceasynctests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -32,33 +32,33 @@
               "RelativeDocumentMoniker": "Services\\BookServiceAsync.cs",
               "ToolTip": "D:\\Repos\\Roxana_tema1\\Services\\BookServiceAsync.cs",
               "RelativeToolTip": "Services\\BookServiceAsync.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAwwB0AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T13:15:58.265Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "BookServiceAsyncTests.cs",
               "DocumentMoniker": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookServiceAsyncTests.cs",
               "RelativeDocumentMoniker": "UnitTests\\BookServiceAsyncTests.cs",
-              "ToolTip": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookServiceAsyncTests.cs*",
-              "RelativeToolTip": "UnitTests\\BookServiceAsyncTests.cs*",
-              "ViewState": "AgIAABAAAAAAAAAAAAAqwA4AAABEAAAAAAAAAA==",
+              "ToolTip": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookServiceAsyncTests.cs",
+              "RelativeToolTip": "UnitTests\\BookServiceAsyncTests.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T13:08:40.392Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BookControllerV2Tests.cs",
-              "DocumentMoniker": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookControllerV2Tests.cs",
-              "RelativeDocumentMoniker": "UnitTests\\BookControllerV2Tests.cs",
-              "ToolTip": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookControllerV2Tests.cs",
-              "RelativeToolTip": "UnitTests\\BookControllerV2Tests.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BookControllerTests.cs",
+              "DocumentMoniker": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookControllerTests.cs",
+              "RelativeDocumentMoniker": "UnitTests\\BookControllerTests.cs",
+              "ToolTip": "D:\\Repos\\Roxana_tema1\\UnitTests\\BookControllerTests.cs",
+              "RelativeToolTip": "UnitTests\\BookControllerTests.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA8wBMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T12:47:08.427Z",
               "EditorCaption": ""

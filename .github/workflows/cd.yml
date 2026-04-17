@@ -1,0 +1,71 @@
+name: CD (Deploy to Azure Web App)
+run-name: BlobDemo ${{ github.event.inputs.version || '1.0.0' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "SemVer version (e.g. 1.2.3)"
+        required: true
+        default: "1.0.0"
+
+permissions:
+  contents: write
+
+env:
+  AZURE_WEBAPP_NAME: internshipnew2026
+  VERSION: ${{ github.event.inputs.version || '1.0.0' }}
+  VERSION_TAG: v${{ github.event.inputs.version || '1.0.0' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version
+        shell: bash
+        run: |
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Version must be valid SemVer (example: 1.2.3)"
+            exit 1
+          fi
+          if git rev-parse "refs/tags/${VERSION_TAG}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> "$GITHUB_ENV"
+            echo "DEPLOY_REF=${VERSION_TAG}" >> "$GITHUB_ENV"
+            echo "Using existing tag ${VERSION_TAG}"
+          else
+            echo "TAG_EXISTS=false" >> "$GITHUB_ENV"
+            echo "DEPLOY_REF=${GITHUB_SHA}" >> "$GITHUB_ENV"
+            echo "Using latest code (${GITHUB_SHA})"
+          fi
+
+      - name: Checkout deploy ref
+        shell: bash
+        run: git checkout "${DEPLOY_REF}"
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Publish app
+        run: dotnet publish BlobDemo.csproj -c Release -o publish
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: publish
+
+      - name: Create git tag
+        if: env.TAG_EXISTS == 'false'
+        shell: bash
+        run: |
+          git tag "${VERSION_TAG}"
+          git push origin "${VERSION_TAG}"

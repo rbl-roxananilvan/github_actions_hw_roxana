@@ -1,0 +1,104 @@
+name: Example 2 Jobs (CI + CD)
+run-name: Example deploy ${{ github.event.inputs.version || '1.0.0' }}
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "SemVer version (e.g. 1.2.3)"
+        required: true
+        default: "1.0.0"
+
+permissions:
+  contents: write
+
+env:
+  AZURE_WEBAPP_NAME: internshipnew2026
+  VERSION: ${{ github.event.inputs.version || '1.0.0' }}
+  VERSION_TAG: v${{ github.event.inputs.version || '1.0.0' }}
+
+jobs:
+  ci:
+    name: CI (Build + Test)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        run: dotnet restore BlobDemo.sln
+
+      - name: Build
+        run: dotnet build BlobDemo.sln --no-restore --configuration Release
+
+      - name: Test (with coverage collection)
+        run: dotnet test BlobDemo.sln --no-build --configuration Release --collect:"XPlat Code Coverage"
+
+      - name: Publish app
+        if: github.event_name == 'workflow_dispatch'
+        run: dotnet publish BlobDemo.csproj -c Release -o publish
+
+      - name: Upload publish artifact
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-publish
+          path: publish/
+
+  cd:
+    name: CD (Deploy Production)
+    if: github.event_name == 'workflow_dispatch'
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout (for tags)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version
+        shell: bash
+        run: |
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Version must be valid SemVer (example: 1.2.3)"
+            exit 1
+          fi
+          if git rev-parse "refs/tags/${VERSION_TAG}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> "$GITHUB_ENV"
+            echo "Using existing tag ${VERSION_TAG}"
+          else
+            echo "TAG_EXISTS=false" >> "$GITHUB_ENV"
+            echo "Using latest code for new tag ${VERSION_TAG}"
+          fi
+
+      - name: Download publish artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-publish
+          path: publish
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: publish
+
+      - name: Create git tag
+        if: env.TAG_EXISTS == 'false'
+        shell: bash
+        run: |
+          git tag "${VERSION_TAG}"
+          git push origin "${VERSION_TAG}"
