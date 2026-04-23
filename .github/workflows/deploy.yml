@@ -54,7 +54,7 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Publish app
-        run: dotnet publish Roxana_tema1/Roxana_tema1.csproj -c Release -o publish
+        run: dotnet publish Roxana_tema1/Roxana_tema1/Roxana_tema1.csproj -c Release -o publish
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
